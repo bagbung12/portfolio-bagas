@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bagas Muhamad Febrian — Web Developer</title>
+<meta name="description" content="Portfolio Bagas Muhamad Febrian, Web Developer dari Bandung."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050508;--bg2:#0a0a12;--bg3:#0f0f1a;
+  --cyan:#00f5ff;--pink:#ff2d78;
+  --white:#e8e8f0;--muted:#5a5a7a;--dim:#2a2a3a;
+}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:2px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,0.012) 2px,rgba(0,245,255,0.012) 4px);pointer-events:none;z-index:1000}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.6s ease,visibility 0.6s ease}
+#loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;letter-spacing:4px;color:var(--cyan);text-shadow:0 0 20px var(--cyan),0 0 60px rgba(0,245,255,0.4);margin-bottom:2rem;animation:flicker 2s infinite}
+@keyframes flicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:0.4}94%{opacity:1}96%{opacity:0.6}97%{opacity:1}}
+.loader-bar-wrap{width:260px;height:2px;background:var(--dim);border-radius:2px;overflow:hidden;margin-bottom:1rem}
+.loader-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--pink));border-radius:2px;box-shadow:0 0 12px var(--cyan)}
+.loader-text{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.15em}
+/* WRAPPER */
+.pf{max-width:940px;margin:0 auto;padding:0 2rem 6rem;position:relative;z-index:1}
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.75rem 2rem;position:sticky;top:0;background:rgba(5,5,8,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,245,255,0.1);z-index:100;margin:0 -2rem}
+.nav-logo{font-family:'Orbitron',monospace;font-size:15px;font-weight:700;letter-spacing:3px;color:var(--cyan);text-shadow:0 0 12px rgba(0,245,255,0.6)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s,text-shadow 0.2s}
+.nav-links a:hover{color:var(--cyan);text-shadow:0 0 8px var(--cyan)}
+/* HERO */
+.hero{padding:5rem 0 6rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-status{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border:1px solid rgba(0,245,255,0.25);border-radius:2px;background:rgba(0,245,255,0.04);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--cyan);text-transform:uppercase;margin-bottom:1.75rem}
+.hero-status-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 6px var(--cyan);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(38px,7vw,66px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:0.5rem}
+.hero-name .n1{color:var(--white)}
+.hero-name .n2{color:transparent;-webkit-text-stroke:1.5px var(--cyan);filter:drop-shadow(0 0 8px rgba(0,245,255,0.5))}
+.hero-name .n3{color:var(--pink);text-shadow:0 0 20px rgba(255,45,120,0.6)}
+.hero-title{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:0.12em;color:var(--muted);margin-bottom:1.5rem}
+.hero-title .hl{color:var(--cyan)}
+.hero-bio{font-size:14px;line-height:1.9;color:var(--muted);max-width:480px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-cyber{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;text-decoration:none;display:inline-block;position:relative;transition:all 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
+.btn-cyber.primary{background:var(--cyan);color:#050508;font-weight:700;box-shadow:0 0 20px rgba(0,245,255,0.4)}
+.btn-cyber.primary:hover{box-shadow:0 0 35px rgba(0,245,255,0.7);transform:translateY(-2px)}
+.btn-cyber.outline{background:transparent;color:var(--cyan);border:1px solid var(--cyan)}
+.btn-cyber.outline:hover{background:rgba(0,245,255,0.07);box-shadow:0 0 20px rgba(0,245,255,0.3)}
+/* AVATAR 3x4 */
+.hero-avatar{position:relative;width:180px;height:240px;flex-shrink:0}
+.avatar-frame{width:180px;height:240px;border-radius:4px;overflow:hidden;position:relative;border:1px solid rgba(0,245,255,0.3);box-shadow:0 0 30px rgba(0,245,255,0.15),inset 0 0 30px rgba(0,245,255,0.04)}
+.avatar-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.9) contrast(1.1) saturate(0.85)}
+.avatar-placeholder{width:100%;height:100%;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.avatar-initials{font-family:'Orbitron',monospace;font-size:36px;font-weight:900;color:var(--cyan);text-shadow:0 0 20px var(--cyan)}
+.avatar-sub{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase}
+.avatar-corner{position:absolute;width:14px;height:14px;border-color:var(--cyan);border-style:solid}
+.avatar-corner.tl{top:-1px;left:-1px;border-width:2px 0 0 2px;box-shadow:-3px -3px 8px rgba(0,245,255,0.5)}
+.avatar-corner.tr{top:-1px;right:-1px;border-width:2px 2px 0 0;box-shadow:3px -3px 8px rgba(0,245,255,0.5)}
+.avatar-corner.bl{bottom:-1px;left:-1px;border-width:0 0 2px 2px;box-shadow:-3px 3px 8px rgba(0,245,255,0.5)}
+.avatar-corner.br{bottom:-1px;right:-1px;border-width:0 2px 2px 0;box-shadow:3px 3px 8px rgba(0,245,255,0.5)}
+.avatar-scan{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0.7;animation:scan 3s linear infinite}
+@keyframes scan{0%{top:0}100%{top:240px}}
+/* SECTION */
+section{margin-bottom:5rem}
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:2rem}
+.sec-num{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--pink)}
+.sec-title{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--white)}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(0,245,255,0.3),transparent)}
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px}
+.skill-card{background:var(--bg2);border:1px solid var(--dim);border-radius:2px;padding:1.25rem;position:relative;overflow:hidden;transition:border-color 0.3s,box-shadow 0.3s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
+.skill-card:hover{border-color:rgba(0,245,255,0.35);box-shadow:0 0 20px rgba(0,245,255,0.08)}
+.skill-card:hover::before{opacity:1}
+.skill-bar-wrap{height:2px;background:var(--dim);border-radius:1px;margin-bottom:14px;overflow:hidden}
+.skill-bar{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--cyan),var(--pink));box-shadow:0 0 8px var(--cyan);transition:width 1.2s cubic-bezier(0.22,1,0.36,1)}
+.skill-name{font-size:14px;font-weight:500;margin-bottom:4px}
+.skill-tag{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.06em}
+.skill-pct{position:absolute;top:1rem;right:1rem;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);opacity:0.6}
+/* EXP */
+.exp-card{background:var(--bg2);border:1px solid var(--dim);border-radius:2px;padding:2rem 2rem 2rem 2.25rem;position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(180deg,var(--cyan),var(--pink),transparent);box-shadow:0 0 10px var(--cyan)}
+.exp-card::after{content:'';position:absolute;top:-1px;right:0;width:0;height:0;border-style:solid;border-width:0 28px 28px 0;border-color:transparent var(--bg) transparent transparent}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.exp-company{font-family:'Orbitron',monospace;font-size:17px;font-weight:700;color:var(--white);letter-spacing:0.04em}
+.exp-badge{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:4px 12px;border:1px solid rgba(255,45,120,0.4);background:rgba(255,45,120,0.07);color:var(--pink)}
+.exp-meta{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em;margin-bottom:1.25rem}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-list li{font-size:14px;color:var(--muted);display:flex;gap:12px;line-height:1.6}
+.exp-list li::before{content:'>';font-family:'Share Tech Mono',monospace;color:var(--cyan);flex-shrink:0;font-size:12px;margin-top:2px;text-shadow:0 0 6px var(--cyan)}
+.exp-link{display:inline-flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:0.1em;color:var(--cyan);text-decoration:none;margin-top:1.25rem;transition:text-shadow 0.2s}
+.exp-link:hover{text-shadow:0 0 16px var(--cyan)}
+/* PROJECT */
+.project-card{background:var(--bg2);border:1px solid var(--dim);border-radius:2px;padding:1.75rem 2rem;transition:border-color 0.3s,box-shadow 0.3s;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.project-card:hover{border-color:rgba(0,245,255,0.3);box-shadow:0 0 30px rgba(0,245,255,0.07)}
+.project-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.project-name{font-family:'Orbitron',monospace;font-size:15px;font-weight:700;letter-spacing:0.04em}
+.project-live{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--cyan);border:1px solid rgba(0,245,255,0.3);padding:4px 10px;text-shadow:0 0 6px var(--cyan);animation:glow-pulse 2s infinite}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 6px rgba(0,245,255,0.2)}50%{box-shadow:0 0 14px rgba(0,245,255,0.5)}}
+.project-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+.tech-stack{display:flex;flex-wrap:wrap;gap:6px}
+.tech-pill{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.06em;padding:4px 10px;border:1px solid var(--dim);color:var(--muted);background:var(--bg3);transition:border-color 0.2s,color 0.2s}
+.tech-pill:hover{border-color:var(--cyan);color:var(--cyan)}
+/* EDUCATION */
+.edu-item{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid var(--dim);align-items:start}
+.edu-year{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);padding-top:2px;letter-spacing:0.06em}
+.edu-school{font-size:15px;font-weight:500;margin-bottom:4px}
+.edu-major{font-size:13px;color:var(--muted)}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.contact-item{padding:1.25rem;background:var(--bg2);border:1px solid var(--dim);display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white);transition:border-color 0.2s,box-shadow 0.2s;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.contact-item:hover{border-color:rgba(0,245,255,0.4);box-shadow:0 0 18px rgba(0,245,255,0.1)}
+.contact-icon{width:40px;height:40px;background:var(--bg3);border:1px solid var(--dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.contact-label{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px}
+.contact-val{font-size:13px;font-weight:500}
+/* FOOTER */
+footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--cyan);text-shadow:0 0 8px rgba(0,245,255,0.4)}
+.footer-note{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em}
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+/* RESPONSIVE */
+@media(max-width:640px){
+  .pf{padding:0 1.25rem 4rem}
+  .hero{grid-template-columns:1fr;padding:3rem 0 4rem}
+  .hero-avatar{display:none}
+  .edu-item{grid-template-columns:1fr;gap:4px}
+  .nav-links{gap:1.2rem}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div id="loader">
+  <div class="loader-logo">BMF.DEV</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="lbar"></div></div>
+  <div class="loader-text" id="ltext">INITIALIZING...</div>
+</div>
+<div class="pf">
+  <nav>
+    <div class="nav-logo">BMF<span style="color:var(--pink)">.</span>DEV</div>
+    <ul class="nav-links">
+      <li><a href="#tentang">Profile</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#proyek">Projects</a></li>
+      <li><a href="#kontak">Contact</a></li>
+    </ul>
+  </nav>
+  <section class="hero" id="tentang">
+    <div>
+      <div class="hero-status">
+        <div class="hero-status-dot"></div>
+        Available for work
+      </div>
+      <h1 class="hero-name">
+        <span class="n1">BAGAS</span><br>
+        <span class="n2">MUHAMAD</span><br>
+        <span class="n3">FEBRIAN</span>
+      </h1>
+      <div class="hero-title">// <span class="hl">WEB_DEVELOPER</span> &middot; BANDUNG &middot; ID</div>
+      <p class="hero-bio">Lulusan Sistem Informasi dengan keahlian membangun website berbasis PHP &amp; MySQL. Berpengalaman membuat sistem CRUD, dashboard admin, dan manajemen database. Terbiasa bekerja mandiri maupun dalam tim, cepat belajar, dan siap berkembang.</p>
+      <div class="hero-btns">
+        <a class="btn-cyber primary" href="mailto:bagasmfebrian99@gmail.com">Hire Me</a>
+        <a class="btn-cyber outline" href="https://mmccourse.my.id/" target="_blank" rel="noopener">View Project &rarr;</a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <div class="avatar-frame">
+        <div class="avatar-placeholder" id="avatarPh">
+          <div class="avatar-initials">BMF</div>
+          <div class="avatar-sub">Pasang Foto</div>
+        </div>
+        <img id="avatarImg" src="" alt="Bagas Muhamad Febrian" style="display:none;width:100%;height:100%;object-fit:cover;object-position:center top"/>
+        <div class="avatar-scan"></div>
+      </div>
+      <div class="avatar-corner tl"></div>
+      <div class="avatar-corner tr"></div>
+      <div class="avatar-corner bl"></div>
+      <div class="avatar-corner br"></div>
+    </div>
+  </section>
+  <section class="fade-in" id="skills">
+    <div class="sec-header">
+      <span class="sec-num">[ 01 ]</span>
+      <h2 class="sec-title">Skills</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-pct">80%</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-w="80%" style="width:0"></div></div>
+        <div class="skill-name">PHP</div>
+        <div class="skill-tag">CRUD &middot; FORM HANDLING</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-pct">75%</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-w="75%" style="width:0"></div></div>
+        <div class="skill-name">MySQL</div>
+        <div class="skill-tag">DATABASE &middot; QUERY</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-pct">60%</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-w="60%" style="width:0"></div></div>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-tag">DOM &middot; EVENTS</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-pct">85%</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-w="85%" style="width:0"></div></div>
+        <div class="skill-name">HTML &amp; CSS</div>
+        <div class="skill-tag">LAYOUT &middot; RESPONSIVE</div>
+      </div>
+    </div>
+  </section>
+  <section class="fade-in">
+    <div class="sec-header">
+      <span class="sec-num">[ 02 ]</span>
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-top">
+        <div class="exp-company">MMC COURSE</div>
+        <div class="exp-badge">INTERNSHIP &middot; 3 MONTHS</div>
+      </div>
+      <div class="exp-meta">WEB_DEVELOPER &middot; 2024 &mdash; 2025</div>
+      <ul class="exp-list">
+        <li>Mengembangkan website media promosi berbasis PHP &amp; MySQL</li>
+        <li>Membangun fitur CRUD untuk data pendaftaran peserta</li>
+        <li>Membuat dashboard admin yang fungsional dan terstruktur</li>
+        <li>Mengelola database dan alur data pengguna secara efisien</li>
+        <li>Menampilkan website live dan dapat diakses publik</li>
+      </ul>
+      <a class="exp-link" href="https://mmccourse.my.id/" target="_blank" rel="noopener">&#x2197; mmccourse.my.id</a>
+    </div>
+  </section>
+  <section class="fade-in" id="proyek">
+    <div class="sec-header">
+      <span class="sec-num">[ 03 ]</span>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-name">WEBSITE MMC COURSE</div>
+        <div class="project-live">&#x25CF; LIVE</div>
+      </div>
+      <p class="project-desc">Platform promosi dan pendaftaran kursus berbasis web. Dilengkapi sistem CRUD data peserta, dashboard admin untuk monitoring, dan manajemen database pengguna. Website sudah berjalan live dan dapat diakses publik.</p>
+      <div class="tech-stack">
+        <span class="tech-pill">PHP</span>
+        <span class="tech-pill">MySQL</span>
+        <span class="tech-pill">HTML</span>
+        <span class="tech-pill">CSS</span>
+        <span class="tech-pill">JavaScript</span>
+      </div>
+    </div>
+  </section>
+  <section class="fade-in">
+    <div class="sec-header">
+      <span class="sec-num">[ 04 ]</span>
+      <h2 class="sec-title">Education</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div>
+      <div class="edu-item">
+        <div class="edu-year">2021 &mdash; 2025</div>
+        <div>
+          <div class="edu-school">Politeknik Piksi Ganesha Bandung</div>
+          <div class="edu-major">Manajemen Sistem Informasi</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2018 &mdash; 2020</div>
+        <div>
+          <div class="edu-school">SMKN 3 Baleendah</div>
+          <div class="edu-major">Agribisnis Tanaman Pangan &amp; Hortikultura</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fade-in" id="kontak">
+    <div class="sec-header">
+      <span class="sec-num">[ 05 ]</span>
+      <h2 class="sec-title">Contact</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-item" href="tel:+6282118728419">
+        <div class="contact-icon">&#128222;</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-val">+62 821-1872-8419</div>
+        </div>
+      </a>
+      <a class="contact-item" href="mailto:bagasmfebrian99@gmail.com">
+        <div class="contact-icon">&#9993;</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val">bagasmfebrian99@gmail.com</div>
+        </div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">&#128205;</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-val">Baleendah, Bandung</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-name">BAGAS MUHAMAD FEBRIAN</div>
+    <div class="footer-note">&copy; 2025 &middot; WEB_DEVELOPER</div>
+  </footer>
+</div>
+<script>
+(function(){
+  var lbar = document.getElementById('lbar');
+  var ltext = document.getElementById('ltext');
+  var loader = document.getElementById('loader');
+  var msgs = ['INITIALIZING...','LOADING ASSETS...','COMPILING DATA...','RENDERING UI...','SYSTEM READY'];
+  var pct = 0;
+  var iv = setInterval(function(){
+    pct += Math.random() * 18 + 4;
+    if(pct >= 100){ pct = 100; clearInterval(iv); }
+    lbar.style.width = pct + '%';
+    ltext.textContent = msgs[Math.min(Math.floor(pct / 25), msgs.length - 1)];
+    if(pct === 100){ setTimeout(function(){ loader.classList.add('hidden'); }, 400); }
+  }, 120);
+
+  var sObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.skill-bar').forEach(function(b){ b.style.width = b.dataset.w; });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skills-grid').forEach(function(el){ sObs.observe(el); });
+
+  var fObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el){ fObs.observe(el); });
+
+  window.setAvatar = function(url){
+    var img = document.getElementById('avatarImg');
+    img.src = url;
+    img.style.display = 'block';
+    document.getElementById('avatarPh').style.display = 'none';
+  };
+  // Uncomment baris di bawah dan ganti dengan link foto kamu:
+   setAvatar('foto.jpg');
+})();
+</script>
+</body>
+</html>
