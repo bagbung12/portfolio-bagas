@@ -127,6 +127,39 @@ section{margin-bottom:5rem}
 footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .footer-name{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--cyan);text-shadow:0 0 8px rgba(0,245,255,0.4)}
 .footer-note{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em}
+/* FEATURES GRID */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:1.25rem 0}
+.feature-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg3);border:1px solid var(--dim);border-radius:2px;font-size:13px;color:var(--muted);transition:border-color 0.2s,color 0.2s}
+.feature-item:hover{border-color:rgba(0,245,255,0.3);color:var(--white)}
+.feature-icon{font-size:15px;flex-shrink:0}
+/* SCREENSHOTS */
+.screenshots-label{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--pink);margin:1.5rem 0 0.75rem;text-transform:uppercase}
+.screenshots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.screenshot-card{border:1px solid var(--dim);border-radius:2px;overflow:hidden;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;aspect-ratio:16/10;position:relative}
+.screenshot-card:hover{border-color:var(--cyan);box-shadow:0 0 14px rgba(0,245,255,0.2)}
+.screenshot-card img{width:100%;height:100%;object-fit:cover;display:block}
+.screenshot-ph{width:100%;height:100%;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:22px}
+.screenshot-ph div{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.08em}
+.screenshot-tag{position:absolute;bottom:0;left:0;right:0;padding:4px 8px;background:rgba(5,5,8,0.85);font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:0.06em}
+/* MODAL */
+#imgModal{display:none;position:fixed;inset:0;background:rgba(5,5,8,0.95);z-index:5000;align-items:center;justify-content:center;padding:2rem}
+#imgModal.open{display:flex}
+#imgModal img{max-width:90vw;max-height:85vh;object-fit:contain;border:1px solid rgba(0,245,255,0.3);box-shadow:0 0 40px rgba(0,245,255,0.15)}
+#imgModal .close-btn{position:fixed;top:1.5rem;right:1.5rem;font-family:'Orbitron',monospace;font-size:18px;color:var(--cyan);cursor:pointer;background:none;border:none;text-shadow:0 0 10px var(--cyan)}
+/* ACHIEVEMENT */
+.achievement-list{display:flex;flex-direction:column;gap:10px}
+.achievement-item{display:flex;align-items:flex-start;gap:16px;padding:1.25rem;background:var(--bg2);border:1px solid var(--dim);border-radius:2px;transition:border-color 0.2s;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+.achievement-item:hover{border-color:rgba(245,230,66,0.35)}
+.achievement-icon{font-size:22px;flex-shrink:0;filter:drop-shadow(0 0 6px rgba(245,230,66,0.5))}
+.achievement-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.achievement-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.04em}
+/* PUBLICATION */
+.pub-card{background:var(--bg2);border:1px solid var(--dim);border-radius:2px;padding:1.75rem 2rem;position:relative;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);transition:border-color 0.2s}
+.pub-card:hover{border-color:rgba(0,245,255,0.3)}
+.pub-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:0.12em;padding:4px 12px;border:1px solid rgba(0,212,170,0.4);background:rgba(0,212,170,0.07);color:#00d4aa;margin-bottom:1rem}
+.pub-title{font-size:15px;font-weight:600;line-height:1.6;margin-bottom:1rem;color:var(--white)}
+.pub-journal{display:flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:0.04em}
+.pub-journal-icon{font-size:16px}
 /* FADE IN */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
@@ -168,7 +201,7 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
         <span class="n2">MUHAMAD</span><br>
         <span class="n3">FEBRIAN</span>
       </h1>
-      <div class="hero-title">// <span class="hl">WEB_DEVELOPER</span> &middot; BANDUNG &middot; ID</div>
+      <div class="hero-title">// <span class="hl">JUNIOR PHP DEV</span> &middot; <span class="hl">WEB DEVELOPER</span> &middot; <span class="hl">MySQL ENTHUSIAST</span></div>
       <p class="hero-bio">Lulusan Sistem Informasi dengan keahlian membangun website berbasis PHP &amp; MySQL. Berpengalaman membuat sistem CRUD, dashboard admin, dan manajemen database. Terbiasa bekerja mandiri maupun dalam tim, cepat belajar, dan siap berkembang.</p>
       <div class="hero-btns">
         <a class="btn-cyber primary" href="mailto:bagasmfebrian99@gmail.com">Hire Me</a>
@@ -181,7 +214,7 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
           <div class="avatar-initials">BMF</div>
           <div class="avatar-sub">Pasang Foto</div>
         </div>
-        <img id="avatarImg" src="" alt="Bagas Muhamad Febrian" style="display:none;width:100%;height:100%;object-fit:cover;object-position:center top"/>
+        <img id="avatarImg" src="foto.jpg" alt="Bagas Muhamad Febrian" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
         <div class="avatar-scan"></div>
       </div>
       <div class="avatar-corner tl"></div>
@@ -253,22 +286,106 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
     </div>
     <div class="project-card">
       <div class="project-top">
-        <div class="project-name">WEBSITE MMC COURSE</div>
+        <div class="project-name">MMC COURSE MANAGEMENT SYSTEM</div>
         <div class="project-live">&#x25CF; LIVE</div>
       </div>
-      <p class="project-desc">Platform promosi dan pendaftaran kursus berbasis web. Dilengkapi sistem CRUD data peserta, dashboard admin untuk monitoring, dan manajemen database pengguna. Website sudah berjalan live dan dapat diakses publik.</p>
-      <div class="tech-stack">
+      <p class="project-desc">Sistem manajemen kursus berbasis web yang dikembangkan secara penuh — mencakup booking system, registrasi peserta, manajemen file, hingga dashboard admin. Dibangun dengan PHP &amp; MySQL dan sudah berjalan live di domain resmi.</p>
+      <div class="features-grid">
+        <div class="feature-item"><span class="feature-icon">&#x1F4C5;</span> Course Booking System</div>
+        <div class="feature-item"><span class="feature-icon">&#x1F4DD;</span> Student Registration System</div>
+        <div class="feature-item"><span class="feature-icon">&#x1F5C3;</span> CRUD Data Management</div>
+        <div class="feature-item"><span class="feature-icon">&#x1F4C2;</span> File Upload Management</div>
+        <div class="feature-item"><span class="feature-icon">&#x1F4CA;</span> Admin Dashboard</div>
+        <div class="feature-item"><span class="feature-icon">&#x1F5C4;</span> Database Management</div>
+      </div>
+      <div class="screenshots-label">SCREENSHOTS</div>
+      <div class="screenshots-grid">
+        <div class="screenshot-card" onclick="openModal(this)">
+          <div class="screenshot-ph"><span>&#x1F5BC;</span><div>Homepage</div></div>
+          <div class="screenshot-tag">Homepage</div>
+        </div>
+        <div class="screenshot-card" onclick="openModal(this)">
+          <div class="screenshot-ph"><span>&#x1F5BC;</span><div>Dashboard Admin</div></div>
+          <div class="screenshot-tag">Dashboard Admin</div>
+        </div>
+        <div class="screenshot-card" onclick="openModal(this)">
+          <div class="screenshot-ph"><span>&#x1F5BC;</span><div>CRUD Peserta</div></div>
+          <div class="screenshot-tag">CRUD Peserta</div>
+        </div>
+        <div class="screenshot-card" onclick="openModal(this)">
+          <div class="screenshot-ph"><span>&#x1F5BC;</span><div>Booking System</div></div>
+          <div class="screenshot-tag">Booking System</div>
+        </div>
+        <div class="screenshot-card" onclick="openModal(this)">
+          <div class="screenshot-ph"><span>&#x1F5BC;</span><div>Upload File</div></div>
+          <div class="screenshot-tag">Upload File</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);">
+        * Ganti placeholder dengan screenshot asli — lihat komentar di HTML
+      </div>
+      <div class="tech-stack" style="margin-top:1.25rem">
         <span class="tech-pill">PHP</span>
         <span class="tech-pill">MySQL</span>
+        <span class="tech-pill">JavaScript</span>
         <span class="tech-pill">HTML</span>
         <span class="tech-pill">CSS</span>
-        <span class="tech-pill">JavaScript</span>
       </div>
+      <a class="exp-link" href="https://mmccourse.my.id/" target="_blank" rel="noopener" style="margin-top:1.25rem">&#x2197; mmccourse.my.id</a>
     </div>
   </section>
+  <!-- ACHIEVEMENT -->
   <section class="fade-in">
     <div class="sec-header">
       <span class="sec-num">[ 04 ]</span>
+      <h2 class="sec-title">Achievements</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="achievement-list">
+      <div class="achievement-item">
+        <div class="achievement-icon">&#x1F3C6;</div>
+        <div>
+          <div class="achievement-title">Web Developer Intern — MMC Course</div>
+          <div class="achievement-sub">Internship · 3 Months · 2024–2025</div>
+        </div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">&#x1F3C6;</div>
+        <div>
+          <div class="achievement-title">Developed Web-Based Course Management System</div>
+          <div class="achievement-sub">Full system: Booking, CRUD, Upload, Dashboard, Database Management</div>
+        </div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">&#x1F3C6;</div>
+        <div>
+          <div class="achievement-title">Scientific Publication (2025)</div>
+          <div class="achievement-sub">Accepted — International Journal Computer Technology (IJCT)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATION -->
+  <section class="fade-in">
+    <div class="sec-header">
+      <span class="sec-num">[ 05 ]</span>
+      <h2 class="sec-title">Publication</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="pub-card">
+      <div class="pub-badge">ACCEPTED &middot; 2025</div>
+      <div class="pub-title">The Impact of Digital Innovation on Improving Efficiency and Market Reach: A Case Study of MMC Private Tutoring in Adapting to the Web Era</div>
+      <div class="pub-journal">
+        <span class="pub-journal-icon">&#x1F4D6;</span>
+        International Journal Computer Technology (IJCT)
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="sec-header">
+      <span class="sec-num">[ 06 ]</span>
       <h2 class="sec-title">Education</h2>
       <div class="sec-line"></div>
     </div>
@@ -291,7 +408,7 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
   </section>
   <section class="fade-in" id="kontak">
     <div class="sec-header">
-      <span class="sec-num">[ 05 ]</span>
+      <span class="sec-num">[ 07 ]</span>
       <h2 class="sec-title">Contact</h2>
       <div class="sec-line"></div>
     </div>
@@ -324,6 +441,10 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
     <div class="footer-note">&copy; 2025 &middot; WEB_DEVELOPER</div>
   </footer>
 </div>
+<div id="imgModal">
+  <button class="close-btn" onclick="closeModal()">&#x2715;</button>
+  <img id="modalImg" src="" alt="Screenshot"/>
+</div>
 <script>
 (function(){
   var lbar = document.getElementById('lbar');
@@ -353,14 +474,50 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(function(el){ fObs.observe(el); });
 
+  // AVATAR
+  // Cara pasang foto: uncomment baris di bawah, ganti URL dengan link foto kamu
+  // setAvatar('https://link-foto-kamu.jpg');
   window.setAvatar = function(url){
     var img = document.getElementById('avatarImg');
     img.src = url;
     img.style.display = 'block';
     document.getElementById('avatarPh').style.display = 'none';
   };
-  // Uncomment baris di bawah dan ganti dengan link foto kamu:
-   setAvatar('foto.jpg');
+  setAvatar('foto.jpg');
+
+  // SCREENSHOTS
+  
+  window.setScreenshot = function(index, url){
+    var cards = document.querySelectorAll('.screenshot-card');
+    if(!cards[index]) return;
+    var ph = cards[index].querySelector('.screenshot-ph');
+    var tag = cards[index].querySelector('.screenshot-tag');
+    var img = document.createElement('img');
+    img.src = url;
+    img.alt = tag ? tag.textContent : 'Screenshot';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block';
+    if(ph) ph.style.display = 'none';
+    cards[index].insertBefore(img, tag);
+    cards[index].dataset.src = url;
+  };
+   setScreenshot(0, 'homepage.png'); // Homepage
+   setScreenshot(1, 'admin.png'); // Dashboard Admin
+   setScreenshot(2, 'crud.png'); // CRUD Peserta
+   setScreenshot(3, 'booking.png'); // Booking System
+   setScreenshot(4, 'upload.png'); // Upload File
+
+  window.openModal = function(card){
+    var src = card.dataset.src;
+    if(!src) return;
+    document.getElementById('modalImg').src = src;
+    document.getElementById('imgModal').classList.add('open');
+  };
+  window.closeModal = function(){
+    document.getElementById('imgModal').classList.remove('open');
+  };
+  document.getElementById('imgModal').addEventListener('click', function(e){
+    if(e.target === this) closeModal();
+  });
 })();
 </script>
 </body>
