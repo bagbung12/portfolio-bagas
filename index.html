@@ -171,6 +171,89 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
   .edu-item{grid-template-columns:1fr;gap:4px}
   .nav-links{gap:1.2rem}
 }
+  /* EFEK GLITCH PADA NAMA HERO */
+.hero-name .n1 {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-name .n1::before,
+.hero-name .n1::after {
+  content: 'BAGAS';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 0, 0, 0);
+}
+
+.hero-name .n1:hover::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--pink);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.hero-name .n1:hover::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--cyan);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(12px, 9999px, 44px, 0); }
+  50% { clip: rect(32px, 9999px, 80px, 0); }
+  100% { clip: rect(2px, 9999px, 100px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(60px, 9999px, 90px, 0); }
+  50% { clip: rect(10px, 9999px, 40px, 0); }
+  100% { clip: rect(40px, 9999px, 70px, 0); }
+}
+
+/* CARDS HOVER ANIMATION & GLASSMORPHISM */
+.skill-card, .exp-card, .project-card, .contact-item, .pub-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.skill-card:hover, .project-card:hover, .contact-item:hover, .pub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 245, 255, 0.15);
+}
+
+/* ENHANCED NAV HOVER & ACTIVE */
+.nav-links a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* RESPONSIVE AVATAR FOR MOBILE (INSTEAD OF DISPLAY:NONE) */
+@media(max-width:640px){
+  .hero-avatar {
+    display: block !important;
+    margin: 2rem auto 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -519,6 +602,33 @@ footer{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--dim);display:
     if(e.target === this) closeModal();
   });
 })();
+  // Menutup Modal menggunakan tombol ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+// Smooth Active State Navigation Highlight pada Scroll
+window.addEventListener('scroll', function() {
+  let sections = document.querySelectorAll('section[id]');
+  let scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+
+  sections.forEach(sec => {
+    let top = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = 'var(--muted)';
+        if (a.getAttribute('href') === '#' + id) {
+          a.style.color = 'var(--cyan)';
+        }
+      });
+    }
+  });
+});
 </script>
 </body>
 </html>
