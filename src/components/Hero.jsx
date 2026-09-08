@@ -146,7 +146,7 @@ export default function Hero() {
                         {profile.name}
                         <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                       </p>
-                      <p className="text-xs text-cyan-400 font-mono">Junior PHP &amp; Web Developer</p>
+                      <p className="text-xs text-cyan-400 font-mono">Junior Develover &amp; Web Developer</p>
                       <p className="text-[11px] text-slate-400 mt-0.5 font-sans">Politeknik Piksi Ganesha Bandung</p>
                     </div>
                   </div>
