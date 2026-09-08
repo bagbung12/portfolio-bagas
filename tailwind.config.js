@@ -7,19 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        bgDark: "#060911",
-        bgElevated: "#0b0f1a",
-        bgCard: "#0f1524",
-        bgCardHover: "#141c30",
-        borderDark: "#1c2436",
-        borderSoft: "#25314a",
-        primaryBlue: "#3b82f6",
-        accentBlue: "#60a5fa",
-        softBlue: "#93c5fd",
-        textMain: "#eef1f8",
-        textMuted: "#94a3b8",
-        textDim: "#64748b",
-        goldAccent: "#f59e0b",
+        bgDark: "#060a12",        // Stitch deep dark canvas
+        bgElevated: "#090f1c",    // Stitch container surface
+        bgCard: "#0d1526",        // Stitch card surface
+        bgCardHover: "#121b30",   // Stitch card hover
+        borderDark: "#1e293b",    // Stitch border stroke
+        borderSoft: "#2a3952",    // Stitch lighter border
+        accentCyan: "#06b6d4",    // Stitch vibrant cyan
+        accentCyanSoft: "#38bdf8",// Stitch cyan light
+        accentBlue: "#3b82f6",    // Stitch blue
+        accentIndigo: "#6366f1",  // Stitch indigo
+        textMain: "#f8fafc",      // White main text
+        textMuted: "#94a3b8",     // Slate text
+        textDim: "#64748b",       // Darker slate text
+        goldAccent: "#f59e0b",    // Amber accent
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -27,10 +28,9 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {
-        'glow-blue': '0 0 25px -5px rgba(59, 130, 246, 0.4)',
-        'glow-cyan': '0 0 25px -5px rgba(56, 189, 248, 0.4)',
-        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
-        'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.6)',
+        'stitch-glow': '0 0 25px -5px rgba(6, 182, 212, 0.35)',
+        'stitch-card': '0 10px 30px -10px rgba(0, 0, 0, 0.7)',
+        'stitch-cyan': '0 0 15px rgba(6, 182, 212, 0.4)',
       },
       animation: {
         'pulse-glow': 'pulseGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1)',
@@ -43,7 +43,7 @@ export default {
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-8px)' },
         }
       }
     },

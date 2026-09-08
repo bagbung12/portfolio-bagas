@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Menu, X, Code2 } from 'lucide-react';
+import { Download, Menu, X, User } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('tentang');
 
   const navItems = [
-    { id: 'tentang', label: 'Profil' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'pengalaman', label: 'Pengalaman' },
-    { id: 'proyek', label: 'Proyek' },
-    { id: 'pendidikan', label: 'Pendidikan' },
+    { id: 'tentang', label: 'Tentang' },
+    { id: 'skills', label: 'Keahlian' },
+    { id: 'proyek', label: 'Proyek Unggulan' },
+    { id: 'pengalaman', label: 'Pengalaman & Edu' },
+    { id: 'pencapaian', label: 'Publikasi' },
     { id: 'kontak', label: 'Kontak' },
   ];
 
@@ -20,7 +20,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Section scrollSpy
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 200;
 
@@ -51,32 +50,35 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-bgDark/80 backdrop-blur-xl border-b border-borderDark py-3 shadow-lg shadow-black/20' : 'bg-transparent py-5'
+      isScrolled ? 'bg-[#060a12]/90 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-2xl shadow-black/60' : 'bg-[#060a12]/60 backdrop-blur-md py-4 border-b border-slate-800/40'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         
-        {/* Brand Logo */}
+        {/* Brand Logo - Stitch Style */}
         <a 
           href="#tentang" 
           onClick={(e) => { e.preventDefault(); scrollToSection('tentang'); }}
-          className="group flex items-center gap-2 font-display text-lg font-bold text-textMain tracking-tight"
+          className="group flex flex-col"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-primaryBlue to-accentBlue flex items-center justify-center text-white shadow-md shadow-primaryBlue/20 group-hover:scale-105 transition-transform">
-            <Code2 className="w-5 h-5" />
+          <div className="font-display text-lg font-extrabold text-white tracking-tight flex items-center gap-1.5">
+            <span className="text-cyan-400 font-mono">BMF //</span>
+            <span>Bagas Febrian</span>
           </div>
-          <span>Bagas<span className="text-primaryBlue">.dev</span></span>
+          <span className="font-mono text-[10px] tracking-wider text-slate-400 font-medium uppercase">
+            JUNIOR DEVELOPER &amp; IT ENTHUSIAST
+          </span>
         </a>
 
-        {/* Desktop Links */}
-        <nav className="hidden md:flex items-center gap-1 bg-bgCard/60 backdrop-blur-md border border-borderDark/60 p-1.5 rounded-full shadow-inner">
+        {/* Desktop Links - Stitch Style */}
+        <nav className="hidden lg:flex items-center gap-1 bg-[#0a0f1d] border border-slate-800 p-1.5 rounded-2xl shadow-inner">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`px-4 py-2 text-xs font-medium rounded-full transition-all duration-200 ${
+              className={`px-4 py-2 text-xs font-medium rounded-xl transition-all duration-200 ${
                 activeSection === item.id 
-                  ? 'bg-primaryBlue text-white shadow-md shadow-primaryBlue/30' 
-                  : 'text-textMuted hover:text-textMain hover:bg-white/5'
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/25' 
+                  : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
               }`}
             >
               {item.label}
@@ -84,22 +86,26 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden md:flex items-center">
+        {/* Right Action Buttons */}
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href={portfolioData.profile.cvPath}
             download
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-primaryBlue text-white hover:bg-blue-600 active:scale-95 transition-all shadow-md shadow-primaryBlue/25 hover:shadow-primaryBlue/40"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold bg-slate-900 text-slate-200 border border-slate-700 hover:border-cyan-400 hover:text-cyan-300 transition-all shadow-md"
           >
-            <Download className="w-3.5 h-3.5" />
-            <span>Download CV</span>
+            <Download className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Unduh CV</span>
           </a>
+
+          <div className="w-9 h-9 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-cyan-400 shadow-inner">
+            <User className="w-4 h-4" />
+          </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-xl bg-bgCard border border-borderDark text-textMuted hover:text-textMain transition-colors"
+          className="lg:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition-colors"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -108,15 +114,15 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-bgDark/95 backdrop-blur-2xl border-b border-borderDark px-6 py-6 shadow-2xl flex flex-col gap-3 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#060a12]/95 backdrop-blur-2xl border-b border-slate-800 px-6 py-6 shadow-2xl flex flex-col gap-3">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                 activeSection === item.id 
-                  ? 'bg-primaryBlue/15 text-accentBlue border border-primaryBlue/30 font-semibold' 
-                  : 'text-textMuted hover:text-textMain hover:bg-bgCard'
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold' 
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900'
               }`}
             >
               {item.label}
@@ -125,10 +131,10 @@ export default function Navbar() {
           <a
             href={portfolioData.profile.cvPath}
             download
-            className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-primaryBlue text-white hover:bg-blue-600 transition-all shadow-lg shadow-primaryBlue/30"
+            className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/30"
           >
             <Download className="w-4 h-4" />
-            <span>Download CV</span>
+            <span>Unduh CV</span>
           </a>
         </div>
       )}

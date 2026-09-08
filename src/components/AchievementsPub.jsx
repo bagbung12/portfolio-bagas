@@ -1,97 +1,128 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, BookOpen, Trophy, CheckCircle2, Sparkles } from 'lucide-react';
+import { BookOpen, Trophy, Award, CheckCircle2, UserCheck } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import TiltCard from './TiltCard';
 
 export default function AchievementsPub() {
   const { achievements, publication } = portfolioData;
 
-  return (
-    <section id="pencapaian" className="py-16 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div className="grid lg:grid-cols-12 gap-10">
-          
-          {/* Achievements Column */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-6 flex flex-col"
-          >
-            <div className="mb-6">
-              <span className="text-xs font-mono font-semibold tracking-wider text-accentBlue uppercase mb-2 block">
-                Rekam Jejak
-              </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-textMain">
-                Pencapaian Penting
-              </h2>
-            </div>
+  const milestoneCards = [
+    {
+      icon: <Award className="w-5 h-5 text-cyan-400" />,
+      title: "Web Developer Intern",
+      desc: "MMC Course • 3 Bulan Dedikasi (2024–2025)"
+    },
+    {
+      icon: <Trophy className="w-5 h-5 text-emerald-400" />,
+      title: "Full Course CMS Builder",
+      desc: "Sistem Lengkap: Booking, CRUD, Upload, & Database"
+    },
+    {
+      icon: <BookOpen className="w-5 h-5 text-indigo-400" />,
+      title: "Academic Researcher",
+      desc: "Publikasi Riset Internasional IJCT 2025"
+    }
+  ];
 
-            <div className="space-y-4 flex-1 flex flex-col justify-between">
-              {achievements.map((item, idx) => (
-                <div
-                  key={item.id}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-bgCard border border-borderDark hover:border-goldAccent/40 hover:translate-x-1 transition-all duration-300 group"
-                >
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
-                    <Trophy className="w-5 h-5" />
+  return (
+    <section id="pencapaian" className="py-20 relative z-10 bg-[#060a12]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-2 mb-2 font-mono text-xs text-cyan-400 font-semibold uppercase tracking-wider">
+            <span className="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30">06 //</span>
+            <span>RESEARCH &amp; MILESTONES</span>
+          </div>
+          <h2 className="font-display text-3xl font-bold text-white">
+            Publikasi Ilmiah &amp; Rekapitulasi Prestasi
+          </h2>
+        </motion.div>
+
+        {/* 3 Summary Milestone Cards - Stitch Screenshot 3 */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {milestoneCards.map((card, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            >
+              <TiltCard className="h-full">
+                <div className="p-6 rounded-2xl bg-[#090f1c] border border-slate-800 backdrop-blur-xl shadow-xl flex items-start gap-4 h-full">
+                  <div className="p-3 rounded-xl bg-[#060a12] border border-slate-800 flex-shrink-0">
+                    {card.icon}
                   </div>
                   <div>
-                    <h3 className="font-display text-base font-bold text-textMain mb-1">
-                      {item.title}
+                    <h3 className="font-display text-base font-bold text-white mb-1">
+                      {card.title}
                     </h3>
-                    <p className="text-xs text-textMuted font-medium">
-                      {item.subtitle}
+                    <p className="text-xs text-slate-400 font-mono">
+                      {card.desc}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Publication Column */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-6 flex flex-col"
-          >
-            <div className="mb-6">
-              <span className="text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase mb-2 block">
-                Karya Ilmiah
-              </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-textMain">
-                Publikasi Jurnal
-              </h2>
-            </div>
-
-            <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-bgCard via-bgCard to-bgElevated border border-borderDark relative overflow-hidden flex-1 flex flex-col justify-between shadow-xl">
-              <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-                <BookOpen className="w-36 h-36 text-emerald-400" />
-              </div>
-
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-5">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>{publication.status}</span>
-                </div>
-
-                <h3 className="font-display text-lg sm:text-xl font-bold text-textMain leading-snug mb-4">
-                  "{publication.title}"
-                </h3>
-              </div>
-
-              <div className="pt-6 border-t border-borderDark/60 flex items-center gap-3 text-xs font-mono text-textMuted">
-                <BookOpen className="w-4 h-4 text-emerald-400" />
-                <span>{publication.journal}</span>
-              </div>
-            </div>
-          </motion.div>
-
+              </TiltCard>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Detailed Scientific Publication Card - Stitch Screenshot 4 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <TiltCard>
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#090f1c] border border-slate-800 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+              
+              {/* Badges Bar */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 uppercase tracking-wider">
+                  ACCEPTED - 2025
+                </span>
+                <span className="px-3 py-1 rounded-full text-xs font-mono text-slate-300 bg-slate-800 border border-slate-700">
+                  International Journal Computer Technology (IJCT)
+                </span>
+                <span className="text-xs font-mono text-slate-500">
+                  Peer-Reviewed Paper
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-6">
+                “The Impact of Digital Innovation on Improving Efficiency and Market Reach: A Case Study of MMC Private Tutoring in Adapting to the Web Era”
+              </h3>
+
+              {/* Abstract */}
+              <p className="text-sm text-slate-300 leading-relaxed font-sans max-w-4xl mb-8">
+                Karya tulis ilmiah berbasis studi kasus empiris dari sistem web MMC Course yang dibangun. Menganalisis bagaimana digitalisasi operasional pendaftaran peserta dan pengelolaan jadwal kursus mampu mereduksi redundansi data serta memperluas jangkauan akuisisi siswa di era komputasi modern.
+              </p>
+
+              {/* Footer Metadata */}
+              <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-800 font-mono text-xs text-slate-400">
+                <div className="flex items-center gap-2">
+                  <UserCheck className="w-4 h-4 text-cyan-400" />
+                  <span>Author: <strong className="text-slate-200">Bagas Muhamad Febrian</strong></span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-indigo-400" />
+                  <span>Index: <span className="text-slate-300">Computer Science &amp; Information Systems</span></span>
+                </div>
+              </div>
+
+            </div>
+          </TiltCard>
+        </motion.div>
 
       </div>
     </section>
