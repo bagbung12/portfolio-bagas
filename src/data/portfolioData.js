@@ -5,7 +5,7 @@ export const portfolioData = {
     name: "Bagas Muhamad Febrian",
     shortName: "Bagas",
     role: "Web Developer",
-    subRoles: ["Junior PHP Developer", "Web Developer", "MySQL Enthusiast"],
+    subRoles: ["Junior Developer", "Web Developer", "MySQL"],
     statusText: "Terbuka untuk peluang kerja",
     location: "Baleendah, Bandung",
     email: "bagasmfebrian99@gmail.com",
