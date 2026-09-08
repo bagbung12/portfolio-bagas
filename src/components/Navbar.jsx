@@ -65,7 +65,7 @@ export default function Navbar() {
             <span>Bagas Febrian</span>
           </div>
           <span className="font-mono text-[10px] tracking-wider text-slate-400 font-medium uppercase">
-            JUNIOR DEVELOPER &amp; IT ENTHUSIAST
+            JUNIOR DEVELOPER 
           </span>
         </a>
 
