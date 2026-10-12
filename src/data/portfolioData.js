@@ -61,7 +61,7 @@ export const portfolioData = {
       badge: "LIVE",
       description: "Sistem manajemen kursus berbasis web yang dikembangkan secara penuh — mencakup booking system, registrasi peserta, manajemen file, hingga dashboard admin. Dibangun dengan PHP & MySQL dan sudah berjalan live di domain resmi.",
       liveUrl: "https://mmccourse.my.id/",
-      githubUrl: "https://github.com/bagbung12/portfolio-bagas",
+      githubUrl: "https://github.com/bagbung12",
       features: [
         { icon: "Calendar", title: "Course Booking System" },
         { icon: "UserCheck", title: "Student Registration System" },
