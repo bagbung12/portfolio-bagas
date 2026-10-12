@@ -14,7 +14,7 @@ export const portfolioData = {
     avatar: `${baseUrl}foto.jpg`,
     cvPath: `${baseUrl}CV_ATS_Bagas_Muhamad_Febrian.pdf`,
     liveDemoUrl: "https://mmccourse.my.id/",
-    githubUrl: "https://github.com/bagbung12/portfolio-bagas",
+    githubUrl: "https://github.com/bagbung12",
   },
   skills: [
     {
